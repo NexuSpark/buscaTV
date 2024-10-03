@@ -1,7 +1,8 @@
 const optionSelect = document.getElementById("options");
 const searchInput = document.getElementById("search");
 const submitButton = document.getElementById("submit");
-let jsonSeleccionado;
+let output = document.getElementById("resultados");
+let jsonSeleccionado = "assets/json/peliculas.json";
 
 optionSelect.addEventListener("change", () => {
     if (optionSelect.value == "peliculas") {
@@ -25,5 +26,36 @@ searchInput.addEventListener("keydown", (event) => {
         if (event.key < 65 || event.key > 90) {
             event.preventDefault();
         }
+    }
+})
+
+submitButton.addEventListener("click", () => {
+    let searchValue = searchInput.value;
+    if (searchValue == "") {
+        alert("Debes escribir algo");
+    } else {
+        searchValue = searchValue.toUpperCase();
+        output.innerHTML = "";
+        fetch(jsonSeleccionado)
+            .then((response) => response.json())
+            .then((data) => {
+                data.data.forEach(element => {
+                    if (element.nombre.startsWith(searchValue)) {
+                        const h5 = document.createElement("h5");
+                        h5.textContent = element.nombre;
+                        const p = document.createElement("p");
+                        p.textContent = element.sinopsis;
+                        output.appendChild(h5);
+                        output.appendChild(p);
+                        
+                    }
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            .finally(() => {
+                searchInput.value = "";
+            });
     }
 })
