@@ -1,15 +1,56 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>BuscaTV</title>
-    <link rel="stylesheet" href="assets/css/picnic.min.css">
-    <link rel="icon" href="assets/img/favicon.png">
-</head>
-<body>
-    
-</body>
-<script src="assets/js/main.js"></script>
+    <link rel="stylesheet" href="assets/css/picnic.min.css" />
+    <link rel="icon" href="assets/img/favicon.png" />
+  </head>
+  <body style="height: fit-content">
+    <header>
+      <nav class="navbar">
+        <div class="brand">
+          <img src="assets/img/favicon.png" alt="logo" />
+          <span class="title">BuscaTV</span>
+        </div>
+      </nav>
+    </header>
+    <main style="margin: auto; width: 90%" class="flex one">
+      <article class="card" style="margin-top: 4em">
+        <header>
+          <h3>Busca tu pelí o serie favorita</h3>
+        </header>
+        <select
+          id="options"
+          style="width: 95%; margin: auto; margin-top: 1em; margin-bottom: 1em"
+        >
+          <option value="peliculas">Películas</option>
+          <option value="series">Series</option>
+        </select>
+        <div
+          class="flex"
+          style="margin: auto; margin-bottom: 1em; width: fit-content"
+        >
+          <input
+            type="text"
+            id="search"
+            placeholder="Busca tu pelí o serie favorita"
+            style="width: 16em; font-size: 1.15em"
+          />
+          <button class="button" id="submit">Buscar</button>
+        </div>
+        <hr>
+        <footer
+          id="results"
+          style="width: 95%; margin: auto; margin-bottom: 1em"
+        >
+          <h4>Resultados</h4>
+          <div id="resultados"></div>
+        </footer>
+      </article>
+    </main>
+  </body>
+  <script src="assets/js/main.js"></script>
 </html>
